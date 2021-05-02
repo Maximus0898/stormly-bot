@@ -1,0 +1,16 @@
+{
+  "name": "stormly-bot",
+  "version": "1.0.0",
+  "description": "Telegram bot with Nodejs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sarvar",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "telegraf": "^3.38.0"
+  }
+}
