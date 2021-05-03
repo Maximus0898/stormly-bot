@@ -65,9 +65,10 @@ const getForecast = new WizardScene(
         );
       })
       .catch((err) => {
-        console.log(err);
         ctx.reply(
-          err.message,
+          `Oops, Something went wrong.\nError: ${
+            err.response.data.cod
+          } - ${err.response.data.message.toUpperCase()}`,
           MarkUp.inlineKeyboard([
             MarkUp.callbackButton('Get another forecast', 'GET_FORECAST'),
           ]).extra()
