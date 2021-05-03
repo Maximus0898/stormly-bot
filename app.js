@@ -34,7 +34,7 @@ const getForecast = new WizardScene(
     ctx.wizard.cityName = ctx.message.text;
     getWeather(ctx.wizard.cityName)
       .then((res) => {
-        // UNIX time to IST
+        // UNIX time to GMT
         const sunrise = new Date(parseInt(res.sys.sunrise) * 1000);
         const sunset = new Date(parseInt(res.sys.sunset) * 1000);
 
@@ -51,11 +51,13 @@ const getForecast = new WizardScene(
             res.main.pressure
           } hPa\n\n🌬 Wind: ${
             res.wind.speed
-          } km/h\n\n🌅 Sunrise :  ${sunrise
-            .toLocaleTimeString()
-            .slice(0, -3)}\n\n🌇 Sunset:  ${sunset
-            .toLocaleTimeString()
-            .slice(0, -3)}
+          } km/h\n\n🌅 Sunrise :  ${sunrise.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+          })}\n\n🌇 Sunset:  ${sunset.toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+          })}
           `,
           MarkUp.inlineKeyboard([
             MarkUp.callbackButton('Get another forecast', 'GET_FORECAST'),
